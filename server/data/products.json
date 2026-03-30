@@ -1,0 +1,488 @@
+[
+  {
+    "id": "balo180422",
+    "name": "Balo du lịch cao cấp",
+    "price": 850000,
+    "description": "Balo chống nước, nhiều ngăn tiện dụng, phù hợp đi phượt hoặc đi làm hằng ngày.",
+    "stock": 120,
+    "specifications": {
+      "chatLieu": "Polyester 600D",
+      "trongLuong": "0.8 kg",
+      "dungTich": "30L"
+    },
+    "tags": [
+      "du lịch",
+      "chống nước",
+      "unisex",
+      "sale"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/balo180422.jpg"
+  },
+  {
+    "id": "den050821",
+    "name": "Đèn bàn LED cảm ứng",
+    "price": 320000,
+    "description": "Đèn bàn 3 chế độ sáng, điều chỉnh độ sáng bằng cảm ứng, bảo vệ mắt.",
+    "stock": 45,
+    "specifications": {
+      "congSuat": "10W",
+      "dienAp": "5V USB",
+      "tuoiTho": "30.000h"
+    },
+    "tags": [
+      "học tập",
+      "văn phòng",
+      "LED"
+    ],
+    "warranty": "6 tháng",
+    "images": "images/den050821.jpg"
+  },
+  {
+    "id": "binh120322",
+    "name": "Bình giữ nhiệt inox 500ml",
+    "price": 195000,
+    "description": "Giữ nóng 12h, giữ lạnh 24h, nắp khóa an toàn, không BPA.",
+    "stock": 200,
+    "specifications": {
+      "dungTich": "500ml",
+      "chatLieu": "Inox 304",
+      "mauSac": "5 màu"
+    },
+    "tags": [
+      "giữ nhiệt",
+      "inox",
+      "eco"
+    ],
+    "warranty": "24 tháng",
+    "images": "images/binh120322.jpg"
+  },
+  {
+    "id": "tainghe200123",
+    "name": "Tai nghe bluetooth 5.0",
+    "price": 1200000,
+    "description": "Tai nghe không dây, chống ồn chủ động ANC, pin 30h, kết nối đa điểm.",
+    "stock": 0,
+    "specifications": {
+      "driver": "40mm",
+      "tanSo": "20Hz–20kHz",
+      "pin": "800mAh"
+    },
+    "tags": [
+      "bluetooth",
+      "ANC",
+      "cao cấp"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/tainghe200123.jpg"
+  },
+  {
+    "id": "sotay150621",
+    "name": "Sổ tay bullet journal A5",
+    "price": 75000,
+    "description": "Giấy dot grid 120gsm, bìa cứng, bookmark ribbon, 192 trang.",
+    "stock": 350,
+    "specifications": {
+      "khoGiay": "A5",
+      "soTrang": "192",
+      "loaiGiay": "Dot grid 120gsm"
+    },
+    "tags": [
+      "văn phòng phẩm",
+      "sáng tạo",
+      "planner"
+    ],
+    "warranty": null,
+    "images": "images/sotay150621.jpg"
+  },
+  {
+    "id": "ghe010920",
+    "name": "Ghế gaming ergonomic",
+    "price": 4500000,
+    "description": "Ghế gaming tựa lưng ngả 180°, đệm lumbar hỗ trợ cột sống, tay ghế 4D.",
+    "stock": 18,
+    "specifications": {
+      "taiTrong": "150 kg",
+      "chieuCao": "Điều chỉnh được",
+      "vatLieu": "Da PU + lưới"
+    },
+    "tags": [
+      "gaming",
+      "ergonomic",
+      "văn phòng"
+    ],
+    "warranty": "18 tháng",
+    "images": "images/ghe010920.jpg"
+  },
+  {
+    "id": "kem220322",
+    "name": "Kem dưỡng da mặt SPF50",
+    "price": 280000,
+    "description": "Kem dưỡng chống nắng phổ rộng PA++++, không gây nhờn, phù hợp mọi loại da.",
+    "stock": 88,
+    "specifications": {
+      "dungTich": "50ml",
+      "spf": "50+",
+      "pa": "++++"
+    },
+    "tags": [
+      "skincare",
+      "chống nắng",
+      "vegan"
+    ],
+    "warranty": "Hạn dùng 36 tháng",
+    "images": "images/kem220322.jpg"
+  },
+  {
+    "id": "chuot100123",
+    "name": "Chuột không dây silent",
+    "price": 450000,
+    "description": "Chuột im lặng 99% tiếng click, DPI 800–3200, pin AAA dùng 12 tháng.",
+    "stock": 67,
+    "specifications": {
+      "dpi": "800–3200",
+      "ketNoi": "2.4GHz USB",
+      "pin": "AAA x1"
+    },
+    "tags": [
+      "văn phòng",
+      "silent",
+      "wireless"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/chuot100123.jpg"
+  },
+  {
+    "id": "noi280521",
+    "name": "Nồi chiên không dầu 5L",
+    "price": 1650000,
+    "description": "Công nghệ rapid air, màn hình cảm ứng, 8 chế độ nấu tự động, dễ vệ sinh.",
+    "stock": 0,
+    "specifications": {
+      "dungTich": "5L",
+      "congSuat": "1700W",
+      "nhietDo": "80–200°C"
+    },
+    "tags": [
+      "nhà bếp",
+      "healthy",
+      "gia đình"
+    ],
+    "warranty": "24 tháng",
+    "images": "images/noi280521.jpg"
+  },
+  {
+    "id": "vi030222",
+    "name": "Ví da nam slim wallet",
+    "price": 390000,
+    "description": "Ví mỏng thiết kế tối giản, da bò thật, chống RFID, chứa 6–8 thẻ.",
+    "stock": 140,
+    "specifications": {
+      "chatLieu": "Da bò thật",
+      "kichThuoc": "11×8×0.5cm",
+      "mau": "Nâu / Đen"
+    },
+    "tags": [
+      "da thật",
+      "RFID",
+      "slim",
+      "quà tặng"
+    ],
+    "warranty": "6 tháng",
+    "images": "images/vi030222.jpg"
+  },
+  {
+    "id": "caphe150720",
+    "name": "Máy pha cà phê espresso",
+    "price": 3200000,
+    "description": "Máy pha cà phê áp suất 15 bar, có bộ tạo bọt sữa, giữ ấm tách tự động.",
+    "stock": 22,
+    "specifications": {
+      "apSuat": "15 bar",
+      "congSuat": "1450W",
+      "dungTichBinhNuoc": "1.5L"
+    },
+    "tags": [
+      "cà phê",
+      "nhà bếp",
+      "cao cấp"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/caphe150720.jpg"
+  },
+  {
+    "id": "kinh220821",
+    "name": "Kính bảo hộ chống tia UV",
+    "price": 120000,
+    "description": "Kính bảo hộ mắt chống tia UV400, tròng polycarbonate chống vỡ, nhẹ 22g.",
+    "stock": 500,
+    "specifications": {
+      "trongKinh": "Polycarbonate",
+      "chongUV": "UV400",
+      "trongLuong": "22g"
+    },
+    "tags": [
+      "bảo hộ",
+      "ngoài trời",
+      "UV"
+    ],
+    "warranty": "3 tháng",
+    "images": "images/kinh220821.jpg"
+  },
+  {
+    "id": "loa011122",
+    "name": "Loa bluetooth mini waterproof",
+    "price": 680000,
+    "description": "Loa di động chống nước IPX7, âm thanh 360°, pin 20h, sạc nhanh Type-C.",
+    "stock": 55,
+    "specifications": {
+      "chongNuoc": "IPX7",
+      "pin": "2600mAh",
+      "ketNoi": "Bluetooth 5.3"
+    },
+    "tags": [
+      "loa",
+      "chống nước",
+      "du lịch",
+      "ngoài trời"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/loa011122.jpg"
+  },
+  {
+    "id": "banphim200323",
+    "name": "Bàn phím cơ TKL",
+    "price": 1950000,
+    "description": "Bàn phím cơ layout TKL 87 phím, switch brown, đèn RGB per-key, kết nối USB-C.",
+    "stock": 30,
+    "specifications": {
+      "layout": "TKL 87 phím",
+      "switch": "Brown tactile",
+      "denNen": "RGB per-key"
+    },
+    "tags": [
+      "gaming",
+      "cơ học",
+      "RGB",
+      "văn phòng"
+    ],
+    "warranty": "24 tháng",
+    "images": "images/banphim200323.jpg"
+  },
+  {
+    "id": "dep090622",
+    "name": "Dép sandal thể thao EVA",
+    "price": 245000,
+    "description": "Dép đế EVA siêu nhẹ, chống trượt, quai điều chỉnh được, phù hợp đi biển đi núi.",
+    "stock": 180,
+    "specifications": {
+      "chatLieuDe": "EVA",
+      "size": "36–45",
+      "mauSac": "Đen / Xanh / Đỏ"
+    },
+    "tags": [
+      "giày dép",
+      "thể thao",
+      "biển",
+      "unisex"
+    ],
+    "warranty": null,
+    "images": "images/dep090622.jpg"
+  },
+  {
+    "id": "hutbui140421",
+    "name": "Máy hút bụi cầm tay không dây",
+    "price": 890000,
+    "description": "Máy hút bụi pin 2200mAh, lực hút 18kPa, bộ lọc HEPA, sạc đầy 4h dùng 40 phút.",
+    "stock": 40,
+    "specifications": {
+      "lucHut": "18kPa",
+      "pin": "2200mAh",
+      "locKhi": "HEPA H12"
+    },
+    "tags": [
+      "nhà cửa",
+      "vệ sinh",
+      "không dây"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/hutbui140421.jpg"
+  },
+  {
+    "id": "tui250123",
+    "name": "Túi tote canvas in hình",
+    "price": 95000,
+    "description": "Túi tote vải canvas dày 350gsm, quai dài, sức chứa lớn, in nhiệt bền màu.",
+    "stock": 430,
+    "specifications": {
+      "chatLieu": "Canvas 350gsm",
+      "kichThuoc": "38×42×10cm",
+      "quai": "Dài 65cm"
+    },
+    "tags": [
+      "thời trang",
+      "eco",
+      "in theo yêu cầu"
+    ],
+    "warranty": null,
+    "images": "images/tui250123.jpg"
+  },
+  {
+    "id": "dongho300922",
+    "name": "Đồng hồ thông minh smartwatch",
+    "price": 2750000,
+    "description": "Smartwatch theo dõi sức khỏe 24/7, GPS, màn hình AMOLED 1.43 inch, pin 14 ngày.",
+    "stock": 25,
+    "specifications": {
+      "manHinh": "AMOLED 1.43 inch",
+      "pin": "14 ngày",
+      "chongNuoc": "5ATM"
+    },
+    "tags": [
+      "smartwatch",
+      "sức khỏe",
+      "GPS",
+      "thể thao"
+    ],
+    "warranty": "12 tháng",
+    "images": "images/dongho300922.jpg"
+  },
+  {
+    "id": "sach110821",
+    "name": "Sách Atomic Habits (bìa mềm)",
+    "price": 89000,
+    "description": "Cuốn sách bestseller về xây dựng thói quen nhỏ tạo thay đổi lớn, bản dịch tiếng Việt.",
+    "stock": 620,
+    "specifications": {
+      "soTrang": "320",
+      "khoSach": "14×20.5cm",
+      "ngonNgu": "Tiếng Việt"
+    },
+    "tags": [
+      "sách",
+      "kỹ năng sống",
+      "bestseller"
+    ],
+    "warranty": null,
+    "images": "images/sach110821.jpg"
+  },
+  {
+    "id": "quat170622",
+    "name": "Quạt tích điện mini để bàn",
+    "price": 275000,
+    "description": "Quạt mini 3 tốc độ, pin 4000mAh dùng 8h, USB-C, xoay 360°, có đèn ngủ LED.",
+    "stock": 95,
+    "specifications": {
+      "pin": "4000mAh",
+      "tocDo": "3 cấp",
+      "tiengOn": "≤35dB"
+    },
+    "tags": [
+      "quạt",
+      "mini",
+      "sạc USB",
+      "văn phòng"
+    ],
+    "warranty": "6 tháng",
+    "images": "images/quat170622.jpg"
+  },
+  {
+    "id": "xedap230521",
+    "name": "Bộ dụng cụ sửa xe đạp 16 món",
+    "price": 185000,
+    "description": "Bộ tool sửa xe đạp đa năng, cờ lê lục giác, tua vít, đồng hồ bơm, hộp đựng chắc chắn.",
+    "stock": 75,
+    "specifications": {
+      "soMon": "16 món",
+      "chatLieu": "Thép CrV",
+      "hopDung": "Nhựa ABS cứng"
+    },
+    "tags": [
+      "xe đạp",
+      "công cụ",
+      "ngoài trời"
+    ],
+    "warranty": "6 tháng",
+    "images": "images/xedap230521.jpg"
+  },
+  {
+    "id": "manhinh010123",
+    "name": "Màn hình máy tính 27 inch IPS",
+    "price": 6800000,
+    "description": "Màn hình IPS 27 inch QHD 2K, 165Hz, 1ms GTG, HDR400, viền siêu mỏng.",
+    "stock": 12,
+    "specifications": {
+      "kichThuoc": "27 inch",
+      "doPhanGiai": "2560×1440 (2K)",
+      "tanSoQuet": "165Hz"
+    },
+    "tags": [
+      "màn hình",
+      "gaming",
+      "đồ họa",
+      "IPS"
+    ],
+    "warranty": "36 tháng",
+    "images": "images/manhinh010123.jpg"
+  },
+  {
+    "id": "hoodie081121",
+    "name": "Áo hoodie nỉ unisex basic",
+    "price": 350000,
+    "description": "Hoodie nỉ bông dày 350gsm, form rộng unisex, túi kangaroo, có mũ điều chỉnh.",
+    "stock": 260,
+    "specifications": {
+      "chatLieu": "Nỉ bông 350gsm",
+      "size": "S / M / L / XL / XXL",
+      "mauSac": "8 màu"
+    },
+    "tags": [
+      "thời trang",
+      "unisex",
+      "mùa đông",
+      "basic"
+    ],
+    "warranty": null,
+    "images": "images/hoodie081121.jpg"
+  },
+  {
+    "id": "noidinhon260322",
+    "name": "Bộ nồi ceramic chống dính 3 món",
+    "price": 1250000,
+    "description": "Bộ nồi ceramic không PFOA, đáy từ dùng được bếp từ, bếp hồng ngoại, nắp kính cường lực.",
+    "stock": 33,
+    "specifications": {
+      "soMon": "3 (18cm / 20cm / 24cm)",
+      "chatLieuTrang": "Ceramic không PFOA",
+      "tuongThich": "Bếp từ, hồng ngoại, ga"
+    },
+    "tags": [
+      "nhà bếp",
+      "nấu ăn",
+      "ceramic",
+      "gia đình"
+    ],
+    "warranty": "24 tháng",
+    "images": "images/noidinhon260322.jpg"
+  },
+  {
+    "id": "dailung190223",
+    "name": "Đai lưng hỗ trợ tập gym",
+    "price": 165000,
+    "description": "Đai lưng neoprene 4mm hỗ trợ cột sống khi tập nặng, điều chỉnh được, thoáng khí.",
+    "stock": 110,
+    "specifications": {
+      "chatLieu": "Neoprene 4mm",
+      "size": "S / M / L / XL",
+      "chieuRong": "10cm"
+    },
+    "tags": [
+      "thể thao",
+      "gym",
+      "bảo hộ",
+      "cột sống"
+    ],
+    "warranty": "3 tháng",
+    "images": "images/dailung190223.jpg"
+  }
+]

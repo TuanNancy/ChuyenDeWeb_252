@@ -1,62 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import ProductList from '../components/ProductList';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import ProductPage from './ProductPage';
+import ContactPage from './ContactPage';
+
+const NAV_ITEMS = [
+  { key: 'Home', label: 'Home' },
+  {
+    key: 'Product',
+    label: 'Product',
+    children: [
+      { key: 'Product', label: 'All products' },
+      { key: 'Product', label: 'Promotions' },
+    ],
+  },
+  {
+    key: 'About',
+    label: 'About',
+    children: [{ key: 'About', label: 'Our story' }],
+  },
+  { key: 'Contact', label: 'Contact' },
+];
 
 function Home({ defaultPage = 'Home' }) {
-  const menuItems = ['Home', 'About', 'Product', 'Contact'];
   const [activePage, setActivePage] = useState(defaultPage);
-
-  const hashMap = {
-    Home: 'home',
-    About: 'about',
-    Product: 'products',
-    Contact: 'contact',
-  };
-
-  // Với react-router, không cần hash nữa; chỉ đổi state nội bộ
-  const handleSelect = (item) => {
-    setActivePage(item);
-  };
 
   return (
     <div>
-      <Header />
-      <div style={{ display: 'flex' }}>
-        <Sidebar
-          items={menuItems}
-          activeItem={activePage}
-          onSelect={handleSelect}
-        />
-        <div style={{ flex: 1, padding: '16px' }}>
-          {activePage === 'Home' && (
-            <div>
-              <h2>Home</h2>
-              <ProductList />
-            </div>
-          )}
-
-          {activePage === 'About' && (
-            <div>
-              <h2>About</h2>
-              <p>Đây là trang giới thiệu về shop của bạn.</p>
-            </div>
-          )}
-
-          {activePage === 'Product' && (
-            <div>
-              <h2>Product</h2>
-              <ProductList />
-            </div>
-          )}
-
-          {activePage === 'Contact' && (
-            <div>
-              <h2>Contact</h2>
-              <p>Thông tin liên hệ, email, số điện thoại...</p>
-            </div>
-          )}
-        </div>
+      <Header
+        activePage={activePage}
+        onNavigate={setActivePage}
+        navItems={NAV_ITEMS}
+      />
+      <div style={{ padding: '16px' }}>
+        {activePage === 'Home' && <HomePage />}
+        {activePage === 'About' && <AboutPage />}
+        {activePage === 'Product' && <ProductPage />}
+        {activePage === 'Contact' && <ContactPage />}
       </div>
     </div>
   );

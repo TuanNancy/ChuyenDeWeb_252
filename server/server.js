@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const products = require('./data/products');
+const { connectMongo } = require('./data/mongo');
+const products = require('./data/products.json');
 
 app.use(cors());
 app.use(express.static('public/'));
@@ -13,6 +15,10 @@ app.get('/products', (req, res) => {
 
 app.get('/', (req, res) => {
   res.send('Hello World! from server');
+});
+
+connectMongo().catch((err) => {
+  console.error('[mongo]', err.message);
 });
 
 app.listen(5000, () => {

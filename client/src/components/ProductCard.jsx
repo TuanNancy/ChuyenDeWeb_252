@@ -1,8 +1,9 @@
 import React from 'react';
+import { API_BASE } from '../api';
 
 function ProductCard({ product }) {
-  const { name, price, image } = product;
-  const imageUrl = image ? `http://localhost:5000/${image}` : '';
+  const { name, price, images } = product;
+  const imageUrl = images ? `${API_BASE}/${images}` : '';
 
   return (
     <div
@@ -29,7 +30,11 @@ function ProductCard({ product }) {
         }}
       />
       <div style={{ fontWeight: 600 }}>{name}</div>
-      <div style={{ color: '#ff5722' }}>{price}</div>
+      <div style={{ color: '#ff5722' }}>
+        {typeof price === 'number'
+          ? `${price.toLocaleString('vi-VN')} đ`
+          : price}
+      </div>
     </div>
   );
 }

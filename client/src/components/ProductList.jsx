@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { API_BASE } from '../api';
 import ProductCard from './ProductCard';
+import './ProductList.css';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    const url = `${API_BASE}/products`;
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -16,22 +19,8 @@ function ProductList() {
   }, []);
 
   return (
-    <section
-      id="products"
-      style={{
-        flex: 1,
-        padding: '16px',
-        boxSizing: 'border-box',
-        backgroundColor: '#fafafa',
-      }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-          gap: '16px',
-        }}
-      >
+    <section id="products" className="productListSection">
+      <div className="productGrid">
         {products.map((product) => (
           <ProductCard
             key={product.id}
