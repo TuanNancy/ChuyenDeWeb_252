@@ -1,11 +1,11 @@
-import React from 'react';
-import './Page.css';
+import React from "react";
 
 function AboutPage() {
   return (
     <div className="page">
-      <h2 className="pageTitle">About</h2>
-      <p>Đây là trang giới thiệu về shop của bạn.</p>
+      <h2 className="page-title">Giới thiệu</h2>
+      <p>Đây là trang giới thiệu về cửa hàng của chúng tôi.</p>
+      <p>Chúng tôi cung cấp các sản phẩm chất lượng cao với giá cả hợp lý.</p>
     </div>
   );
 }

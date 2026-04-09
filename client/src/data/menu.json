@@ -1,0 +1,57 @@
+[
+  {
+    "label": "Home",
+    "path": "/",
+    "icon": "home",
+    "role": ["guest", "user", "admin"],
+    "order": 1
+  },
+  {
+    "label": "Sản phẩm",
+    "path": "/products",
+    "icon": "box",
+    "role": ["guest", "user", "admin"],
+    "order": 2,
+    "children": [
+      {
+        "label": "Tất cả",
+        "path": "/products",
+        "filterTag": null
+      },
+      {
+        "label": "Văn phòng",
+        "path": "/products/van-phong",
+        "filterTag": "văn phòng"
+      },
+      {
+        "label": "Nhà bếp",
+        "path": "/products/nha-bep",
+        "filterTag": "nhà bếp"
+      },
+      {
+        "label": "Gaming",
+        "path": "/products/gaming",
+        "filterTag": "gaming"
+      },
+      {
+        "label": "Du lịch",
+        "path": "/products/du-lich",
+        "filterTag": "du lịch"
+      }
+    ]
+  },
+  {
+    "label": "Giới thiệu",
+    "path": "/about",
+    "icon": "info",
+    "role": ["guest", "user", "admin"],
+    "order": 3
+  },
+  {
+    "label": "Quản trị",
+    "path": "/admin",
+    "icon": "shield",
+    "role": ["admin"],
+    "order": 4
+  }
+]

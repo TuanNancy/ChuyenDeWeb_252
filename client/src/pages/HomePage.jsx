@@ -1,12 +1,12 @@
-import React from 'react';
-import ProductList from '../components/ProductList';
-import './Page.css';
+import React from "react";
 
 function HomePage() {
   return (
     <div className="page">
-      <h2 className="pageTitle">Home</h2>
-      <ProductList />
+      <h2 className="page-title">Chào mừng</h2>
+      <p className="home-welcome">
+        Chào mừng bạn đến với cửa hàng của chúng tôi!
+      </p>
     </div>
   );
 }
