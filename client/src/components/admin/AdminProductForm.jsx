@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { API_BASE } from "../../api";
 
-/**
- * AdminProductForm — Form thêm mới hoặc chỉnh sửa sản phẩm
- * Dùng chung cho cả route /admin/add và /admin/edit/:id
- */
 function AdminProductForm() {
-  const { id } = useParams(); // id nếu là edit, undefined nếu là add
+  const { id } = useParams();
   const navigate = useNavigate();
   const isEdit = !!id;
 
@@ -24,10 +20,10 @@ function AdminProductForm() {
     specValues: [""],
   });
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
   const [fetchLoading, setFetchLoading] = useState(isEdit);
 
-  // Nếu là edit → load data
   useEffect(() => {
     if (!isEdit) return;
     setFetchLoading(true);
@@ -67,37 +63,64 @@ function AdminProductForm() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSpecKeyChange = (index, value) => {
-    setForm((prev) => {
-      const keys = [...prev.specKeys];
-      keys[index] = value;
-      return { ...prev, specKeys: keys };
-    });
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    setError(null);
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      const res = await fetch(`${API_BASE}/admin/upload`, {
+        method: "POST",
+        body: formData,
+      });
+      const ct = res.headers.get("content-type") || "";
+      if (!ct.includes("application/json")) {
+        const text = await res.text();
+        throw new Error(`Server lỗi: ${text.slice(0, 120)}`);
+      }
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Upload thất bại");
+      }
+      const data = await res.json();
+      setForm((prev) => ({ ...prev, images: data.imagePath }));
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setUploading(false);
+    }
   };
 
-  const handleSpecValueChange = (index, value) => {
-    setForm((prev) => {
-      const values = [...prev.specValues];
-      values[index] = value;
-      return { ...prev, specValues: values };
+  const handleSpecKeyChange = (i, v) => {
+    setForm((p) => {
+      const k = [...p.specKeys];
+      k[i] = v;
+      return { ...p, specKeys: k };
     });
   };
-
+  const handleSpecValueChange = (i, v) => {
+    setForm((p) => {
+      const v2 = [...p.specValues];
+      v2[i] = v;
+      return { ...p, specValues: v2 };
+    });
+  };
   const addSpecRow = () => {
-    setForm((prev) => ({
-      ...prev,
-      specKeys: [...prev.specKeys, ""],
-      specValues: [...prev.specValues, ""],
+    setForm((p) => ({
+      ...p,
+      specKeys: [...p.specKeys, ""],
+      specValues: [...p.specValues, ""],
     }));
   };
-
-  const removeSpecRow = (index) => {
+  const removeSpecRow = (i) => {
     if (form.specKeys.length <= 1) return;
-    setForm((prev) => {
-      const keys = prev.specKeys.filter((_, i) => i !== index);
-      const values = prev.specValues.filter((_, i) => i !== index);
-      return { ...prev, specKeys: keys, specValues: values };
-    });
+    setForm((p) => ({
+      ...p,
+      specKeys: p.specKeys.filter((_, j) => j !== i),
+      specValues: p.specValues.filter((_, j) => j !== i),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -105,7 +128,6 @@ function AdminProductForm() {
     setError(null);
     setLoading(true);
 
-    // Build specifications object
     const specifications = {};
     form.specKeys.forEach((key, i) => {
       const k = key.trim();
@@ -129,7 +151,7 @@ function AdminProductForm() {
     };
 
     if (!body.id || !body.name || isNaN(body.price)) {
-      setError("Vui lòng điền đầy đủ Mã SP, Tên và Giá hợp lệ.");
+      setError("Vui lòng điền Mã SP, Tên và Giá hợp lệ.");
       setLoading(false);
       return;
     }
@@ -139,24 +161,20 @@ function AdminProductForm() {
       if (isEdit) {
         url = `${API_BASE}/admin/products/${id}`;
         method = "PUT";
-        // Khi edit, không gửi id trong body
         delete body.id;
       } else {
         url = `${API_BASE}/admin/products`;
         method = "POST";
       }
-
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-
       if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(errData.error || "Thao tác thất bại");
+        const d = await res.json();
+        throw new Error(d.error || "Thao tác thất bại");
       }
-
       alert(isEdit ? "Cập nhật thành công!" : "Thêm sản phẩm thành công!");
       navigate("/admin");
     } catch (err) {
@@ -187,7 +205,6 @@ function AdminProductForm() {
       <h2 className="page-title">
         {isEdit ? `Chỉnh sửa: ${form.name}` : "Thêm sản phẩm mới"}
       </h2>
-
       {error && <p className="admin-error">{error}</p>}
 
       <form className="admin-form" onSubmit={handleSubmit}>
@@ -199,10 +216,9 @@ function AdminProductForm() {
             onChange={handleChange}
             disabled={isEdit}
             required={!isEdit}
-            placeholder="VD: balo180422"
+            placeholder="VD: sp001"
           />
         </div>
-
         <div className="form-group">
           <label>
             Tên sản phẩm <span className="required">*</span>
@@ -215,7 +231,6 @@ function AdminProductForm() {
             placeholder="Tên sản phẩm"
           />
         </div>
-
         <div className="form-row">
           <div className="form-group">
             <label>
@@ -242,17 +257,15 @@ function AdminProductForm() {
             />
           </div>
         </div>
-
         <div className="form-group">
           <label>Bảo hành</label>
           <input
             name="warranty"
             value={form.warranty}
             onChange={handleChange}
-            placeholder="VD: 12 tháng, hoặc để trống"
+            placeholder="VD: 12 tháng"
           />
         </div>
-
         <div className="form-group">
           <label>Mô tả</label>
           <textarea
@@ -263,27 +276,44 @@ function AdminProductForm() {
             placeholder="Mô tả sản phẩm..."
           />
         </div>
-
         <div className="form-group">
           <label>Tags (phân cách bằng dấu phẩy)</label>
           <input
             name="tags"
             value={form.tags}
             onChange={handleChange}
-            placeholder="du lịch, chống nước, unisex"
+            placeholder="gaming, wireless"
           />
         </div>
 
+        {/* Upload ảnh */}
         <div className="form-group">
-          <label>Đường dẫn ảnh</label>
+          <label>Ảnh sản phẩm</label>
           <input
-            name="images"
-            value={form.images}
-            onChange={handleChange}
-            placeholder="images/balo180422.jpg"
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            disabled={uploading}
           />
+          {uploading && <p>Đang tải ảnh lên...</p>}
+          {form.images && (
+            <div className="image-preview">
+              <img
+                src={`${API_BASE}/${form.images}`}
+                alt="Xem trước"
+                style={{
+                  maxWidth: 200,
+                  maxHeight: 200,
+                  objectFit: "contain",
+                  marginTop: 8,
+                }}
+              />
+              <p>{form.images}</p>
+            </div>
+          )}
         </div>
 
+        {/* Thông số kỹ thuật */}
         <div className="form-group">
           <label>Thông số kỹ thuật</label>
           {form.specKeys.map((key, i) => (

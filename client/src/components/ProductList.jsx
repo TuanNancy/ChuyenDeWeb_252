@@ -20,35 +20,47 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
       : `${API_BASE}/products`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        setProducts(data);
+      })
       .catch((error) => {
         console.error("Lỗi khi tải sản phẩm:", error);
       });
   }, [searchQuery]);
 
   /**
-   * Trích xuất weight (số) từ sản phẩm
-   * Ưu tiên: specifications.weightCapacity → specifications.weight → null
+   * Trích xuất trọng lượng (gam) từ specifications và description
    */
   function getWeight(product) {
     const specs = product.specifications || {};
-    const val = specs.weightCapacity || specs.weight || null;
-    if (!val) return null;
-    const num = parseFloat(String(val).replace(/[^\d.]/g, ""));
-    return Number.isNaN(num) ? null : num;
+    const values = Object.values(specs);
+    
+    for (const val of values) {
+      const str = String(val).toLowerCase();
+      
+      const kgMatch = str.match(/(\d+\.?\d*)\s*kg/);
+      if (kgMatch) return parseFloat(kgMatch[1]) * 1000;
+      
+      const gMatch = str.match(/(\d+\.?\d*)\s*g$/);
+      if (gMatch) return parseFloat(gMatch[1]);
+    }
+    
+    const desc = String(product.description || "").toLowerCase();
+    const descGMatch = desc.match(/(\d+\.?\d*)\s*g/);
+    if (descGMatch) return parseFloat(descGMatch[1]);
+    
+    return null;
   }
 
   const visible = useMemo(() => {
     let list = Array.isArray(products) ? products : [];
 
-    // Lọc theo tag
     if (filterTag) {
       list = list.filter(
         (p) => Array.isArray(p.tags) && p.tags.includes(filterTag),
       );
     }
 
-    // Lọc theo tải trọng (weight)
     const wMin = minWeight === "" ? null : Number(minWeight);
     const wMax = maxWeight === "" ? null : Number(maxWeight);
     if (wMin != null && !Number.isNaN(wMin)) {
@@ -70,13 +82,13 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
   return (
     <section className="product-list-section">
       <div className="product-filters">
-        <span className="product-filters-label">Tải trọng (kg)</span>
+        <span className="product-filters-label">Trọng lượng (g)</span>
         <input
           type="number"
           className="product-filter-input"
           placeholder="Tối thiểu"
           min={0}
-          aria-label="Tải trọng tối thiểu"
+          aria-label="Trọng lượng tối thiểu"
           value={minWeight}
           onChange={(e) => setMinWeight(e.target.value)}
         />
@@ -86,7 +98,7 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
           className="product-filter-input"
           placeholder="Tối đa"
           min={0}
-          aria-label="Tải trọng tối đa"
+          aria-label="Trọng lượng tối đa"
           value={maxWeight}
           onChange={(e) => setMaxWeight(e.target.value)}
         />

@@ -1,19 +1,18 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import { Link } from "react-router-dom";
 import { API_BASE } from "../../api";
 
-/**
- * AdminProductTable — Bảng quản lý sản phẩm với search box riêng
- * Hiển thị 3 cột chính: name, price, warranty
- * Có nút Thêm / Sửa / Xóa
- */
 function AdminProductTable() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadProducts = async (q = "") => {
+  const loadProducts = useCallback(async (q = "") => {
     setLoading(true);
     try {
       let url;
@@ -32,32 +31,20 @@ function AdminProductTable() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     loadProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [loadProducts]);
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     loadProducts(search);
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm(`Bạn có chắc muốn xóa sản phẩm "${id}"?`)) return;
-    try {
-      const res = await fetch(`${API_BASE}/admin/products/${id}`, {
-        method: "DELETE",
-      });
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || "Xóa thất bại");
-      }
-      loadProducts(search);
-    } catch (err) {
-      alert(err.message);
-    }
   };
 
   return (
@@ -67,9 +54,9 @@ function AdminProductTable() {
           <input
             type="text"
             className="admin-search-input"
-            placeholder="Tìm theo mã SP, tên, mô tả..."
+            placeholder="Tìm theo mã sản phẩm (ID)..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearchChange}
           />
           <button type="submit" className="admin-btn admin-btn-primary">
             Tìm
@@ -136,12 +123,12 @@ function AdminProductTable() {
                       >
                         Sửa
                       </Link>
-                      <button
+                      <Link
+                        to={`/admin/delete/${p.id}`}
                         className="admin-btn admin-btn-sm admin-btn-danger"
-                        onClick={() => handleDelete(p.id)}
                       >
                         Xóa
-                      </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

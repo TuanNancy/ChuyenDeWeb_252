@@ -11,10 +11,8 @@ function ProductsPage() {
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("q") || "";
 
-  // category là tag luôn (từ /products/c/<tag>)
   const filterTag = category ? decodeURIComponent(category) : null;
 
-  // Tiêu đề trang
   const pageTitle = useMemo(() => {
     if (!filterTag) return "Tất cả sản phẩm";
     return filterTag.charAt(0).toUpperCase() + filterTag.slice(1);

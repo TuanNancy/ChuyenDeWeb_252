@@ -33,24 +33,25 @@ async function deleteById(id) {
 
 async function search(keyword) {
   const col = getCollection(COLLECTION);
-  return col
-    .find({
-      $or: [
-        { name: { $regex: keyword, $options: "i" } },
-        { description: { $regex: keyword, $options: "i" } },
-        { "specifications.heightRange": { $regex: keyword, $options: "i" } },
-      ],
-    })
-    .toArray();
+  const regex = { $regex: keyword, $options: "i" };
+  const query = {
+    $or: [
+      { name: regex },
+      { id: regex },
+      { description: regex },
+      { tags: regex },
+      { "specifications.heightRange": regex },
+      { "specifications.chieucao": regex },
+      { chieucao: regex },
+    ],
+  };
+  return col.find(query).toArray();
 }
 
 async function adminSearch(keyword) {
   const col = getCollection(COLLECTION);
-  return col
-    .find({
-      id: { $regex: keyword, $options: "i" },
-    })
-    .toArray();
+  const regex = new RegExp(`^${keyword}`, 'i');
+  return col.find({ id: regex }).toArray();
 }
 
 module.exports = {

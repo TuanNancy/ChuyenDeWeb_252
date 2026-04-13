@@ -1,19 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import deepSeekLogo from "../assets/deep-seek-logo-whale-1ced.png";
+
+const DEBOUNCE_DELAY = 500;
 
 function Header() {
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const q = keyword.trim();
-    if (q) {
-      navigate(`/products?q=${encodeURIComponent(q)}`);
+    performSearch(keyword);
+  };
+
+  const performSearch = (q) => {
+    const trimmed = q.trim();
+    if (trimmed) {
+      navigate(`/products/search?q=${encodeURIComponent(trimmed)}`);
     } else {
       navigate("/products");
     }
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setKeyword(value);
+
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      performSearch(value);
+    }, DEBOUNCE_DELAY);
   };
 
   return (
@@ -33,7 +56,7 @@ function Header() {
               placeholder="Tìm theo tên, mô tả, tag..."
               aria-label="Tìm kiếm sản phẩm"
               value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
+              onChange={handleChange}
             />
           </form>
         </div>
