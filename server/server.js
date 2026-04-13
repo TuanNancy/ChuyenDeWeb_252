@@ -1,7 +1,9 @@
-require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const multer = require("multer");
+const xlsx = require("xlsx");
+const csvParser = require("csv-parser");
+const fs = require("fs");
 const app = express();
 const cors = require("cors");
 const { getDb, closeDb } = require("./data/connection");
@@ -34,6 +36,13 @@ const upload = multer({
       cb(new Error("Chỉ chấp nhận file: jpg, jpeg, png, gif, webp"));
     }
   },
+});
+
+// Multer riêng cho import CSV/Excel (không filter, chỉ giới hạn size 10MB)
+const uploadImport = multer({
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 },
+  // Không có fileFilter - sẽ validate sau khi upload
 });
 
 // ==================== PUBLIC ENDPOINTS ====================
@@ -153,6 +162,73 @@ app.delete("/admin/products/:id", async (req, res) => {
     res.status(500).json({ error: "Lỗi server khi xóa" });
   }
 });
+
+// Import CSV/Excel
+app.post(
+  "/admin/import",
+  (req, res, next) => {
+    uploadImport.single("file")(req, res, (err) => {
+      if (err) return res.status(400).json({ error: err.message });
+      if (!req.file) return res.status(400).json({ error: "Chưa chọn file" });
+      next();
+    });
+  },
+  async (req, res) => {
+    try {
+      const filePath = req.file.path;
+      const ext = path.extname(req.file.originalname).toLowerCase();
+      let products = [];
+
+      if (ext === ".csv") {
+        // Parse CSV
+        products = await new Promise((resolve, reject) => {
+          const results = [];
+          fs.createReadStream(filePath)
+            .pipe(csvParser())
+            .on("data", (row) => results.push(row))
+            .on("end", () => resolve(results))
+            .on("error", (err) => reject(err));
+        });
+      } else if ([".xlsx", ".xls"].includes(ext)) {
+        // Parse Excel
+        const workbook = xlsx.readFile(filePath);
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        products = xlsx.utils.sheet_to_json(sheet, { defval: "" });
+      } else {
+        return res.status(400).json({
+          error: "Định dạng file không được hỗ trợ. Chỉ chấp nhận CSV, XLSX, XLS",
+        });
+      }
+
+      // Xóa file tạm sau khi parse
+      fs.unlinkSync(filePath);
+
+      if (products.length === 0) {
+        return res
+          .status(400)
+          .json({ error: "File không có dữ liệu hoặc dòng nào hợp lệ" });
+      }
+
+      // Import vào database
+      const override = req.query.override !== "false"; // mặc định override
+      const result = await Product.importProducts(products, {
+        overrideOnDuplicate: override,
+      });
+
+      res.json({
+        message: "Import hoàn tất",
+        totalRows: products.length,
+        success: result.success,
+        skipped: result.skipped,
+        errors: result.errors.length > 0 ? result.errors.slice(0, 10) : [], // tối đa 10 lỗi
+      });
+    } catch (err) {
+      console.error("Lỗi POST /admin/import:", err.message);
+      res.status(500).json({ error: "Lỗi server khi import dữ liệu" });
+    }
+  }
+);
 
 app.get("/", (req, res) => res.send("Hello World! from server"));
 

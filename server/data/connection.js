@@ -1,8 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://vutuan2004vn_db_user:KwxWXFxWM6lLsFTh@web252.yg2l99k.mongodb.net/";
+const MONGODB_URI = "mongodb+srv://vutuan2004vn_db_user:KwxWXFxWM6lLsFTh@web252.yg2l99k.mongodb.net/";
 const DB_NAME = "chuyendeweb";
 
 let client = null;

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useParams } from 'react-router-dom';
 
 function AdminLayout() {
   const location = useLocation();
+  const { id } = useParams();
   const isActive = (path) => location.pathname === path;
-  const pathParts = location.pathname.split('/');
-  const productId = pathParts[3];
   
   return (
     <div className="app-layout">
@@ -32,31 +31,31 @@ function AdminLayout() {
               </Link>
             </li>
             
-            {productId && (
+            {id && (
               <li className="side-nav-group">
                 <div className="side-nav-group-label">
-                  <span>📦 SP: {productId}</span>
+                  <span>📦 SP: {id}</span>
                 </div>
                 <ul className="side-nav-sub-list">
                   <li>
-                    <Link 
-                      to={`/admin/view/${productId}`}
+                    <Link
+                      to={`/admin/view/${id}`}
                       className={`side-nav-link${location.pathname.includes('/view') ? ' active' : ''}`}
                     >
                       👁 Xem chi tiết
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to={`/admin/edit/${productId}`}
+                    <Link
+                      to={`/admin/edit/${id}`}
                       className={`side-nav-link${location.pathname.includes('/edit') ? ' active' : ''}`}
                     >
                       ✏️ Sửa sản phẩm
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to={`/admin/delete/${productId}`}
+                    <Link
+                      to={`/admin/delete/${id}`}
                       className={`side-nav-link${location.pathname.includes('/delete') ? ' active' : ''}`}
                     >
                       🗑 Xóa sản phẩm

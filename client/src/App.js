@@ -9,10 +9,6 @@ import AboutPage from "./pages/AboutPage";
 import ProductDetail from "./pages/ProductDetail";
 import AdminPage from "./pages/AdminPage";
 
-import AdminProductForm from "./components/admin/AdminProductForm";
-import AdminProductView from "./components/admin/AdminProductView";
-import AdminProductDelete from "./components/admin/AdminProductDelete";
-
 function App() {
   return (
     <BrowserRouter>
@@ -24,11 +20,7 @@ function App() {
           <Route path="products/c/:category" element={<ProductsPage />} />
           <Route path="products/p/:id" element={<ProductDetail />} />
           <Route path="about" element={<AboutPage />} />
-          <Route path="admin" element={<AdminPage />} />
-          <Route path="admin/add" element={<AdminProductForm />} />
-          <Route path="admin/view/:id" element={<AdminProductView />} />
-          <Route path="admin/edit/:id" element={<AdminProductForm />} />
-          <Route path="admin/delete/:id" element={<AdminProductDelete />} />
+          <Route path="admin/*" element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

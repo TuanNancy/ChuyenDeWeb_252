@@ -74,9 +74,14 @@ function AdminProductTable() {
             </button>
           )}
         </form>
-        <Link to="/admin/add" className="admin-btn admin-btn-success">
-          + Thêm sản phẩm
-        </Link>
+        <div className="admin-toolbar-actions">
+          <Link to="/admin/import" className="admin-btn admin-btn-info">
+            📥 Import CSV/Excel
+          </Link>
+          <Link to="/admin/add" className="admin-btn admin-btn-success">
+            + Thêm sản phẩm
+          </Link>
+        </div>
       </div>
 
       {loading && <p>Đang tải...</p>}

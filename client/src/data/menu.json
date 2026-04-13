@@ -11,7 +11,16 @@
     "path": "/products",
     "icon": "box",
     "role": ["guest", "user", "admin"],
-    "order": 2
+    "order": 2,
+    "children": [
+      { "label": "Tất cả", "path": "/products" },
+      { "label": "Gaming", "path": "/products/c/gaming" },
+      { "label": "RGB", "path": "/products/c/rgb" },
+      { "label": "Wireless", "path": "/products/c/wireless" },
+      { "label": "Cơ", "path": "/products/c/mechanical-keyboard" },
+      { "label": "Tai nghe", "path": "/products/c/headset" },
+      { "label": "Chuột", "path": "/products/c/mouse" }
+    ]
   },
   {
     "label": "Giới thiệu",

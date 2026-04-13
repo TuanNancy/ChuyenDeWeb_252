@@ -13,11 +13,23 @@ function SideNav() {
 
   const [openGroups, setOpenGroups] = useState(() => {
     const initial = {};
-    menuItems.forEach((item) => {
-      if (item.path === "/products" || item.path === "/") {
-        initial[item.path] = item.children
-          ? item.children.some((child) => child.path === currentPath)
-          : currentPath === item.path;
+    const allMenuItems = menuItems.map((item) => {
+      // Ưu tiên children tĩnh từ menu.json
+      if (item.children && Array.isArray(item.children)) {
+        return item;
+      }
+      // Fallback: nếu là /products không có children, tạo tạm để kiểm tra
+      if (item.path === "/products") {
+        return { ...item, children: [{ path: "/products" }] };
+      }
+      return item;
+    });
+    
+    allMenuItems.forEach((item) => {
+      if (item.children?.length) {
+        initial[item.path] = item.children.some(
+          (child) => child.path === currentPath
+        );
       }
     });
     return initial;
@@ -52,6 +64,12 @@ function SideNav() {
 
   const visibleMenu = useMemo(() => {
     return menuItems.map((item) => {
+      // Nếu item đã có children tĩnh trong menu.json, giữ nguyên
+      if (item.children && Array.isArray(item.children)) {
+        return item;
+      }
+      
+      // Nếu không có children tĩnh nhưng là /products, sinh động từ tags
       if (item.path === "/products" && item.children !== false) {
         const dynamicChildren = [
           { label: "Tất cả", path: "/products" },

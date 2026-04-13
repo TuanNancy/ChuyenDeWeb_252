@@ -10,6 +10,7 @@ import ProductCard from "./ProductCard";
  */
 function ProductList({ filterTag = null, searchQuery = "" }) {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
   const [minWeight, setMinWeight] = useState("");
   const [maxWeight, setMaxWeight] = useState("");
 
@@ -19,12 +20,17 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
       ? `${API_BASE}/products/search?q=${encodeURIComponent(q)}`
       : `${API_BASE}/products`;
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then((data) => {
         setProducts(data);
+        setError(null);
       })
       .catch((error) => {
-        console.error("Lỗi khi tải sản phẩm:", error);
+        setError(error.message);
+        setProducts([]);
       });
   }, [searchQuery]);
 
@@ -81,6 +87,11 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
 
   return (
     <section className="product-list-section">
+      {error && (
+        <div className="error-message" role="alert">
+          Không thể tải sản phẩm: {error}
+        </div>
+      )}
       <div className="product-filters">
         <span className="product-filters-label">Trọng lượng (g)</span>
         <input

@@ -54,6 +54,143 @@ async function adminSearch(keyword) {
   return col.find({ id: regex }).toArray();
 }
 
+/**
+ * Import nhiều sản phẩm từ mảng dữ liệu
+ * @param {Array} products - Mảng sản phẩm cần import
+ * @param {Object} options - { overrideOnDuplicate: boolean }
+ * @returns {Object} { success: number, skipped: number, errors: Array }
+ */
+async function importProducts(products, options = { overrideOnDuplicate: true }) {
+  const col = getCollection(COLLECTION);
+  const result = { success: 0, skipped: 0, errors: [] };
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    const rowNumber = i + 1;
+
+    // Validation cơ bản: bắt buộc có id, name, price
+    if (!product.id || !product.name || product.price == null) {
+      result.errors.push({
+        row: rowNumber,
+        error: `Thiếu trường bắt buộc (id, name, price)`,
+        data: product,
+      });
+      result.skipped++;
+      continue;
+    }
+
+    // Chuyển đổi price sang số
+    const price = Number(product.price);
+    if (isNaN(price) || price < 0) {
+      result.errors.push({
+        row: rowNumber,
+        error: `Giá không hợp lệ: ${product.price}`,
+        data: product,
+      });
+      result.skipped++;
+      continue;
+    }
+
+    // Chuẩn hóa dữ liệu
+    const normalizedProduct = {
+      id: String(product.id).trim(),
+      name: String(product.name).trim(),
+      price: price,
+      description: product.description ? String(product.description).trim() : "",
+      stock: product.stock ? Number(product.stock) : 0,
+      warranty: product.warranty ? String(product.warranty).trim() : null,
+      tags: product.tags
+        ? String(product.tags)
+            .split(/[,;]/)
+            .map((t) => t.trim())
+            .filter(Boolean)
+        : [],
+      specifications: product.specifications || {},
+      images: product.images || "",
+    };
+
+    // Xử lý specifications nếu có các trường riêng
+    // (các cột như "driver", "dpi", "screenSize" sẽ được gom vào specifications)
+    const specFields = [
+      "driver",
+      "frequency",
+      "connectivity",
+      "dpi",
+      "battery",
+      "screenSize",
+      "refreshRate",
+      "resolution",
+      "panelType",
+      "weight",
+      "dimensions",
+      "material",
+      "weightCapacity",
+      "adjustableHeight",
+      "armrests",
+      "wheels",
+      "foldable",
+      "color",
+      "compatibility",
+      "microphone",
+      "noiseCancellation",
+      "sensor",
+      "printTechnology",
+      "printSpeed",
+      "functions",
+      "paperSize",
+      "projectionTechnology",
+      "lumens",
+      "throwRatio",
+      "network",
+    ];
+
+    const specs = {};
+    for (const field of specFields) {
+      if (product[field] !== undefined && product[field] !== "") {
+        specs[field] = String(product[field]).trim();
+      }
+    }
+    if (Object.keys(specs).length > 0) {
+      normalizedProduct.specifications = {
+        ...normalizedProduct.specifications,
+        ...specs,
+      };
+    }
+
+    try {
+      // Kiểm tra xem ID đã tồn tại chưa
+      const existing = await col.findOne({ id: normalizedProduct.id });
+
+      if (existing) {
+        if (options.overrideOnDuplicate) {
+          // Cập nhật sản phẩm hiện có
+          await col.updateOne(
+            { id: normalizedProduct.id },
+            { $set: normalizedProduct }
+          );
+          result.success++;
+        } else {
+          // Bỏ qua nếu không override
+          result.skipped++;
+        }
+      } else {
+        // Thêm mới
+        await col.insertOne(normalizedProduct);
+        result.success++;
+      }
+    } catch (err) {
+      result.errors.push({
+        row: rowNumber,
+        error: `Lỗi khi import: ${err.message}`,
+        data: product,
+      });
+      result.skipped++;
+    }
+  }
+
+  return result;
+}
+
 module.exports = {
   getAll,
   getById,
@@ -62,4 +199,5 @@ module.exports = {
   deleteById,
   search,
   adminSearch,
+  importProducts,
 };
