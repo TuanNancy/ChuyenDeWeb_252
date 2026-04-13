@@ -19,24 +19,24 @@
         "filterTag": null
       },
       {
-        "label": "Văn phòng",
-        "path": "/products/van-phong",
-        "filterTag": "văn phòng"
-      },
-      {
-        "label": "Nhà bếp",
-        "path": "/products/nha-bep",
-        "filterTag": "nhà bếp"
-      },
-      {
         "label": "Gaming",
-        "path": "/products/gaming",
+        "path": "/products/c/gaming",
         "filterTag": "gaming"
       },
       {
-        "label": "Du lịch",
-        "path": "/products/du-lich",
-        "filterTag": "du lịch"
+        "label": "Streaming",
+        "path": "/products/c/streaming",
+        "filterTag": "streaming"
+      },
+      {
+        "label": "Bàn phím",
+        "path": "/products/c/ban-phim",
+        "filterTag": "mechanical keyboard"
+      },
+      {
+        "label": "Không dây",
+        "path": "/products/c/khong-day",
+        "filterTag": "wireless"
       }
     ]
   },

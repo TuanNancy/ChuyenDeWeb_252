@@ -2,16 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { API_BASE } from "../api";
 import ProductCard from "./ProductCard";
 
-function matchesKeyword(product, q) {
-  const lower = q.toLowerCase();
-  if (product.name?.toLowerCase().includes(lower)) return true;
-  if (product.description?.toLowerCase().includes(lower)) return true;
-  if (Array.isArray(product.tags)) {
-    return product.tags.some((t) => t.toLowerCase().includes(lower));
-  }
-  return false;
-}
-
 /**
  * ProductList - hiển thị danh sách sản phẩm với bộ lọc
  * @param {object} props
@@ -20,21 +10,36 @@ function matchesKeyword(product, q) {
  */
 function ProductList({ filterTag = null, searchQuery = "" }) {
   const [products, setProducts] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minWeight, setMinWeight] = useState("");
+  const [maxWeight, setMaxWeight] = useState("");
 
   useEffect(() => {
-    const url = `${API_BASE}/products`;
+    const q = searchQuery.trim();
+    const url = q
+      ? `${API_BASE}/products/search?q=${encodeURIComponent(q)}`
+      : `${API_BASE}/products`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((error) => {
         console.error("Lỗi khi tải sản phẩm:", error);
       });
-  }, []);
+  }, [searchQuery]);
+
+  /**
+   * Trích xuất weight (số) từ sản phẩm
+   * Ưu tiên: specifications.weightCapacity → specifications.weight → null
+   */
+  function getWeight(product) {
+    const specs = product.specifications || {};
+    const val = specs.weightCapacity || specs.weight || null;
+    if (!val) return null;
+    const num = parseFloat(String(val).replace(/[^\d.]/g, ""));
+    return Number.isNaN(num) ? null : num;
+  }
 
   const visible = useMemo(() => {
-    let list = products;
+    let list = Array.isArray(products) ? products : [];
 
     // Lọc theo tag
     if (filterTag) {
@@ -43,37 +48,37 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
       );
     }
 
-    // Lọc theo từ khóa tìm kiếm
-    const q = searchQuery.trim();
-    if (q) {
-      list = list.filter((p) => matchesKeyword(p, q));
+    // Lọc theo tải trọng (weight)
+    const wMin = minWeight === "" ? null : Number(minWeight);
+    const wMax = maxWeight === "" ? null : Number(maxWeight);
+    if (wMin != null && !Number.isNaN(wMin)) {
+      list = list.filter((p) => {
+        const w = getWeight(p);
+        return w != null && w >= wMin;
+      });
     }
-
-    // Lọc theo giá
-    const min = minPrice === "" ? null : Number(minPrice);
-    const max = maxPrice === "" ? null : Number(maxPrice);
-    if (min != null && !Number.isNaN(min)) {
-      list = list.filter((p) => typeof p.price === "number" && p.price >= min);
-    }
-    if (max != null && !Number.isNaN(max)) {
-      list = list.filter((p) => typeof p.price === "number" && p.price <= max);
+    if (wMax != null && !Number.isNaN(wMax)) {
+      list = list.filter((p) => {
+        const w = getWeight(p);
+        return w != null && w <= wMax;
+      });
     }
 
     return list;
-  }, [products, filterTag, searchQuery, minPrice, maxPrice]);
+  }, [products, filterTag, minWeight, maxWeight]);
 
   return (
     <section className="product-list-section">
       <div className="product-filters">
-        <span className="product-filters-label">Giá (VNĐ)</span>
+        <span className="product-filters-label">Tải trọng (kg)</span>
         <input
           type="number"
           className="product-filter-input"
           placeholder="Tối thiểu"
           min={0}
-          aria-label="Giá tối thiểu"
-          value={minPrice}
-          onChange={(e) => setMinPrice(e.target.value)}
+          aria-label="Tải trọng tối thiểu"
+          value={minWeight}
+          onChange={(e) => setMinWeight(e.target.value)}
         />
         <span className="product-filters-dash">—</span>
         <input
@@ -81,9 +86,9 @@ function ProductList({ filterTag = null, searchQuery = "" }) {
           className="product-filter-input"
           placeholder="Tối đa"
           min={0}
-          aria-label="Giá tối đa"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}
+          aria-label="Tải trọng tối đa"
+          value={maxWeight}
+          onChange={(e) => setMaxWeight(e.target.value)}
         />
       </div>
       <div className="product-grid">

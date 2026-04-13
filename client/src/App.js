@@ -16,12 +16,11 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="products" element={<ProductsPage />} />
-          <Route path="products/:category" element={<ProductsPage />} />
+          <Route path="products/c/:category" element={<ProductsPage />} />
+          <Route path="products/p/:id" element={<ProductDetail />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="admin/*" element={<AdminPage />} />
         </Route>
-        {/* Route riêng cho chi tiết sản phẩm - không dùng MainLayout */}
-        <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
   );

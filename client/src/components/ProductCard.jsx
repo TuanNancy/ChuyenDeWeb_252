@@ -7,7 +7,7 @@ function ProductCard({ product }) {
   const imageUrl = images ? `${API_BASE}/${images}` : "";
 
   return (
-    <Link to={`/products/${product.id}`} style={styles.card}>
+    <Link to={`/products/p/${product.id}`} style={styles.card}>
       <div
         style={{
           ...styles.imageWrapper,

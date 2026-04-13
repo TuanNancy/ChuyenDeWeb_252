@@ -1,7 +1,7 @@
 // Product DB helpers — dùng mongodb driver thuần (không Mongoose)
-const { getCollection } = require("../data/connection");
+const { getCollection } = require("./connection");
 
-const COLLECTION = "products";
+const COLLECTION = "gears";
 
 async function getAll() {
   const col = getCollection(COLLECTION);
@@ -33,17 +33,32 @@ async function deleteById(id) {
 
 async function search(keyword) {
   const col = getCollection(COLLECTION);
-  const q = keyword.toLowerCase();
   return col
     .find({
       $or: [
         { name: { $regex: keyword, $options: "i" } },
         { description: { $regex: keyword, $options: "i" } },
-        { warranty: { $regex: keyword, $options: "i" } },
-        { tags: { $regex: keyword, $options: "i" } },
+        { "specifications.heightRange": { $regex: keyword, $options: "i" } },
       ],
     })
     .toArray();
 }
 
-module.exports = { getAll, getById, create, updateById, deleteById, search };
+async function adminSearch(keyword) {
+  const col = getCollection(COLLECTION);
+  return col
+    .find({
+      id: { $regex: keyword, $options: "i" },
+    })
+    .toArray();
+}
+
+module.exports = {
+  getAll,
+  getById,
+  create,
+  updateById,
+  deleteById,
+  search,
+  adminSearch,
+};

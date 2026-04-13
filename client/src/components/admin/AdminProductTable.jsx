@@ -116,7 +116,7 @@ function AdminProductTable() {
                     <td className="admin-code">{p.id}</td>
                     <td>
                       <Link
-                        to={`/products/${p.id}`}
+                        to={`/products/p/${p.id}`}
                         className="admin-product-link"
                       >
                         {p.name}

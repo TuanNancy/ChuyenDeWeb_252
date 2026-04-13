@@ -25,19 +25,40 @@ function ProductDetail() {
       });
   }, [id]);
 
-  if (loading) return <div className="page"><p>Đang tải...</p></div>;
-  if (error) return <div className="page"><p style={{ color: "red" }}>{error}</p></div>;
-  if (!product) return <div className="page"><p>Không có dữ liệu.</p></div>;
+  if (loading)
+    return (
+      <div className="page">
+        <p>Đang tải...</p>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="page">
+        <p style={{ color: "red" }}>{error}</p>
+      </div>
+    );
+  if (!product)
+    return (
+      <div className="page">
+        <p>Không có dữ liệu.</p>
+      </div>
+    );
 
   const imageUrl = product.images ? `${API_BASE}/${product.images}` : "";
 
   return (
     <div className="page product-detail-page">
-      <Link to="/" className="back-link">&larr; Quay lại</Link>
+      <Link to="/products" className="back-link">
+        &larr; Quay lại
+      </Link>
       <div className="product-detail">
         <div className="product-detail-left">
           {imageUrl ? (
-            <img src={imageUrl} alt={product.name} className="product-detail-image" />
+            <img
+              src={imageUrl}
+              alt={product.name}
+              className="product-detail-image"
+            />
           ) : (
             <div className="product-detail-image-placeholder">Không có ảnh</div>
           )}
@@ -72,28 +93,33 @@ function ProductDetail() {
             </div>
           )}
 
-          {product.specifications && Object.keys(product.specifications).length > 0 && (
-            <div className="product-detail-section">
-              <h3>Thông số kỹ thuật</h3>
-              <table className="spec-table">
-                <tbody>
-                  {Object.entries(product.specifications).map(([key, value]) => (
-                    <tr key={key}>
-                      <td className="spec-key">{key}</td>
-                      <td className="spec-value">{String(value)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+          {product.specifications &&
+            Object.keys(product.specifications).length > 0 && (
+              <div className="product-detail-section">
+                <h3>Thông số kỹ thuật</h3>
+                <table className="spec-table">
+                  <tbody>
+                    {Object.entries(product.specifications).map(
+                      ([key, value]) => (
+                        <tr key={key}>
+                          <td className="spec-key">{key}</td>
+                          <td className="spec-value">{String(value)}</td>
+                        </tr>
+                      ),
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
 
           {Array.isArray(product.tags) && product.tags.length > 0 && (
             <div className="product-detail-section">
               <h3>Thẻ</h3>
               <div className="tag-list">
                 {product.tags.map((tag, i) => (
-                  <span key={i} className="tag-badge">{tag}</span>
+                  <span key={i} className="tag-badge">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>

@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { getDb, closeDb } = require("./data/connection");
-const Product = require("./db/Product");
+const Product = require("./data/Product");
 
 app.use(cors());
 app.use(express.json());
@@ -35,6 +35,22 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
+// Public: tìm kiếm sản phẩm (name, description, heightRange)
+app.get("/products/search", async (req, res) => {
+  try {
+    const { q } = req.query;
+    if (!q || !q.trim()) {
+      const all = await Product.getAll();
+      return res.json(all);
+    }
+    const results = await Product.search(q.trim());
+    res.json(results);
+  } catch (err) {
+    console.error("Lỗi GET /products/search:", err.message);
+    res.status(500).json({ error: "Lỗi server khi tìm kiếm" });
+  }
+});
+
 // ==================== ADMIN ENDPOINTS ====================
 
 // Admin: tìm kiếm sản phẩm
@@ -45,7 +61,7 @@ app.get("/admin/products/search", async (req, res) => {
       const all = await Product.getAll();
       return res.json(all);
     }
-    const results = await Product.search(q.trim());
+    const results = await Product.adminSearch(q.trim());
     res.json(results);
   } catch (err) {
     console.error("Lỗi GET /admin/products/search:", err.message);
@@ -67,12 +83,10 @@ app.post("/admin/products", async (req, res) => {
       return res.status(409).json({ error: "Product ID đã tồn tại" });
 
     const result = await Product.create(product);
-    res
-      .status(201)
-      .json({
-        message: "Thêm sản phẩm thành công",
-        insertedId: result.insertedId,
-      });
+    res.status(201).json({
+      message: "Thêm sản phẩm thành công",
+      insertedId: result.insertedId,
+    });
   } catch (err) {
     console.error("Lỗi POST /admin/products:", err.message);
     res.status(500).json({ error: "Lỗi server khi thêm sản phẩm" });
