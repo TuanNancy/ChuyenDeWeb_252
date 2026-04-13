@@ -1,9 +1,8 @@
 /* ===========================
-   GLOBAL STYLES (styles.css)
-   Gom tất cả CSS của project
+   TOÀN BỘ CSS CỦA PROJECT
    =========================== */
 
-/* --- Reset & Base --- */
+/* --- Đặt lại & Base --- */
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +25,7 @@ code {
         source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* --- Layout --- */
+/* --- Bố cục --- */
 .app-layout {
     min-height: 100vh;
     display: flex;
@@ -47,7 +46,7 @@ code {
     padding: 16px;
 }
 
-/* --- Header --- */
+/* --- Thanh đầu --- */
 .header {
     position: sticky;
     top: 0;
@@ -125,7 +124,7 @@ code {
     box-shadow: 0 0 0 2px rgba(77, 107, 254, 0.25);
 }
 
-/* --- SideNav --- */
+/* --- Menu bên --- */
 .side-nav {
     flex-shrink: 0;
     width: 200px;
@@ -241,7 +240,7 @@ code {
     }
 }
 
-/* --- Product List --- */
+/* --- Danh sách sản phẩm --- */
 .product-list-section {
     flex: 1;
 }
@@ -309,7 +308,7 @@ code {
     }
 }
 
-/* --- Page chung --- */
+/* --- Trang chung --- */
 .page {
     max-width: 1200px;
     margin: 0 auto;
@@ -334,7 +333,7 @@ code {
 }
 
 /* ===========================
-   PRODUCT DETAIL
+   CHI TIẾT SẢN PHẨM
    =========================== */
 .back-link {
     display: inline-block;

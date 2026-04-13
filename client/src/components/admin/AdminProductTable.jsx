@@ -67,7 +67,7 @@ function AdminProductTable() {
           <input
             type="text"
             className="admin-search-input"
-            placeholder="Tìm kiếm theo tên, mô tả, bảo hành, tags..."
+            placeholder="Tìm theo mã SP, tên, mô tả..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

@@ -11,34 +11,7 @@
     "path": "/products",
     "icon": "box",
     "role": ["guest", "user", "admin"],
-    "order": 2,
-    "children": [
-      {
-        "label": "Tất cả",
-        "path": "/products",
-        "filterTag": null
-      },
-      {
-        "label": "Gaming",
-        "path": "/products/c/gaming",
-        "filterTag": "gaming"
-      },
-      {
-        "label": "Streaming",
-        "path": "/products/c/streaming",
-        "filterTag": "streaming"
-      },
-      {
-        "label": "Bàn phím",
-        "path": "/products/c/ban-phim",
-        "filterTag": "mechanical keyboard"
-      },
-      {
-        "label": "Không dây",
-        "path": "/products/c/khong-day",
-        "filterTag": "wireless"
-      }
-    ]
+    "order": 2
   },
   {
     "label": "Giới thiệu",

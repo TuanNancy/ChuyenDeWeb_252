@@ -100,12 +100,49 @@ function ProductDetail() {
                 <table className="spec-table">
                   <tbody>
                     {Object.entries(product.specifications).map(
-                      ([key, value]) => (
-                        <tr key={key}>
-                          <td className="spec-key">{key}</td>
-                          <td className="spec-value">{String(value)}</td>
-                        </tr>
-                      ),
+                      ([key, value]) => {
+                        const labelMap = {
+                          driver: "Driver (loa)",
+                          frequency: "Dải tần",
+                          connectivity: "Kết nối",
+                          weightCapacity: "Tải trọng",
+                          height: "Chiều cao",
+                          heightRange: "Khoảng nâng hạ",
+                          material: "Chất liệu",
+                          dpi: "DPI",
+                          battery: "Pin",
+                          batteryLife: "Thời lượng pin",
+                          resolution: "Độ phân giải",
+                          screenSize: "Kích thước màn hình",
+                          refreshRate: "Tần số quét",
+                          latency: "Độ trễ",
+                          focus: "Lấy nét",
+                          fieldOfView: "Góc nhìn",
+                          wattage: "Công suất",
+                          backlight: "Đèn nền",
+                          layout: "Bố cục phím",
+                          switch: "Switch",
+                          switchType: "Loại switch",
+                          weight: "Trọng lượng",
+                          dimensions: "Kích thước",
+                          surface: "Bề mặt",
+                          base: "Đế",
+                          inputResolution: "Độ phân giải đầu vào",
+                          ports: "Cổng kết nối",
+                          powerDelivery: "Sạc truyền qua",
+                          lighting: "Đèn",
+                          usbPorts: "Cổng USB",
+                          compatibility: "Tương thích",
+                          pattern: "Pickup pattern",
+                        };
+                        const label = labelMap[key] || key;
+                        return (
+                          <tr key={key}>
+                            <td className="spec-key">{label}</td>
+                            <td className="spec-value">{String(value)}</td>
+                          </tr>
+                        );
+                      },
                     )}
                   </tbody>
                 </table>

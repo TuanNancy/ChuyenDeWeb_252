@@ -21,7 +21,7 @@ function Header() {
       <div className="header-inner">
         <div className="header-left">
           <a href="/" className="logo-btn" aria-label="Trang chủ">
-            <img src={deepSeekLogo} alt="Logo" className="logo-img" />
+            <img src={deepSeekLogo} alt="Biểu tượng" className="logo-img" />
           </a>
         </div>
 

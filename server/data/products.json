@@ -1,0 +1,362 @@
+[
+  {
+    "id": "headset010124",
+    "name": "Gaming Headset 7.1 Surround",
+    "price": 1350000,
+    "description": "Tai nghe gaming 7.1 âm thanh vòm, micro chống ồn có thể tháo rời, đệm tai memory foam, tương thích PC/PS5/Xbox.",
+    "stock": 85,
+    "specifications": {
+      "driver": "50mm",
+      "frequency": "20Hz–20kHz",
+      "connectivity": "USB + 3.5mm"
+    },
+    "tags": ["gaming", "headset", "surround sound", "PC", "console"],
+    "warranty": "12 tháng",
+    "images": "images/headset010124.jpg"
+  },
+  {
+    "id": "chair020124",
+    "name": "Ghế Gaming Ergonomic Pro",
+    "price": 4800000,
+    "description": "Ghế gaming tựa lưng ngả 180°, đệm lumbar + cổ điều chỉnh, tay ghế 4D, chất liệu da PU cao cấp.",
+    "stock": 20,
+    "specifications": {
+      "weightCapacity": "150 kg",
+      "height": "Điều chỉnh được",
+      "material": "Da PU + lưới thoáng khí"
+    },
+    "tags": ["gaming", "ergonomic", "chair", "4D armrest"],
+    "warranty": "24 tháng",
+    "images": "images/chair020124.jpg"
+  },
+  {
+    "id": "mouse030124",
+    "name": "Chuột Gaming Không Dây 26K DPI",
+    "price": 1650000,
+    "description": "Chuột gaming không dây, cảm biến quang 26K DPI, polling rate 1000Hz, pin sạc 70h, nhẹ 95g.",
+    "stock": 60,
+    "specifications": {
+      "dpi": "100–26000",
+      "connectivity": "2.4GHz Wireless + USB-C",
+      "battery": "70h"
+    },
+    "tags": ["gaming", "wireless", "mouse", "lightweight"],
+    "warranty": "12 tháng",
+    "images": "images/mouse030124.jpg"
+  },
+  {
+    "id": "monitor040124",
+    "name": "Màn Hình Gaming 27\" 240Hz IPS",
+    "price": 7500000,
+    "description": "Màn hình IPS 27 inch QHD 2K, 240Hz, 1ms GTG, G-Sync Compatible, HDR400, viền siêu mỏng 3 cạnh.",
+    "stock": 15,
+    "specifications": {
+      "screenSize": "27 inch",
+      "resolution": "2560×1440 (2K)",
+      "refreshRate": "240Hz"
+    },
+    "tags": ["gaming", "monitor", "IPS", "240Hz", "G-Sync"],
+    "warranty": "36 tháng",
+    "images": "images/monitor040124.jpg"
+  },
+  {
+    "id": "keyboard050124",
+    "name": "Bàn Phím Cơ Gaming TKL RGB",
+    "price": 2100000,
+    "description": "Bàn phím cơ TKL 87 phím, switch red linear, RGB per-key, kết nối USB-C có thể tháo rời, hot-swap switch.",
+    "stock": 40,
+    "specifications": {
+      "layout": "TKL 87 phím",
+      "switch": "Red linear",
+      "backlight": "RGB per-key"
+    },
+    "tags": ["gaming", "mechanical keyboard", "RGB", "hot-swap", "TKL"],
+    "warranty": "24 tháng",
+    "images": "images/keyboard050124.jpg"
+  },
+  {
+    "id": "mousepad060124",
+    "name": "Mousepad Gaming XL Tốc Độ Cao",
+    "price": 320000,
+    "description": "Mousepad gaming cỡ XL 900×400mm, bề mặt vải tốc độ cao, đế cao su chống trượt, viền may chắc chắn.",
+    "stock": 150,
+    "specifications": {
+      "dimensions": "900×400×4mm",
+      "surface": "Vải tốc độ cao",
+      "base": "Cao su chống trượt"
+    },
+    "tags": ["gaming", "mousepad", "XL", "desk mat"],
+    "warranty": "6 tháng",
+    "images": "images/mousepad060124.jpg"
+  },
+  {
+    "id": "controller070124",
+    "name": "Tay Cầm Gaming Bluetooth Pro",
+    "price": 1450000,
+    "description": "Tay cầm gaming Bluetooth 5.0, trigger có thể lập trình, rung haptic, pin 20h, tương thích PC/Android/iOS.",
+    "stock": 55,
+    "specifications": {
+      "connectivity": "Bluetooth 5.0 + USB-C",
+      "battery": "20h",
+      "compatibility": "PC / Android / iOS / Steam"
+    },
+    "tags": ["gaming", "controller", "bluetooth", "haptic"],
+    "warranty": "12 tháng",
+    "images": "images/controller070124.jpg"
+  },
+  {
+    "id": "webcam080124",
+    "name": "Webcam Streaming 1080p 60fps",
+    "price": 890000,
+    "description": "Webcam full HD 1080p 60fps, autofocus nhanh, xóa phông AI, mic stereo tích hợp, phù hợp stream và họp online.",
+    "stock": 45,
+    "specifications": {
+      "resolution": "1920×1080 (60fps)",
+      "focus": "Autofocus",
+      "fieldOfView": "90°"
+    },
+    "tags": ["streaming", "webcam", "1080p", "content creator"],
+    "warranty": "12 tháng",
+    "images": "images/webcam080124.jpg"
+  },
+  {
+    "id": "monitor090124",
+    "name": "Màn Hình Gaming 24\" 165Hz FHD",
+    "price": 3900000,
+    "description": "Màn hình IPS 24 inch Full HD, 165Hz, 1ms, AMD FreeSync Premium, lý tưởng cho game FPS tốc độ cao.",
+    "stock": 30,
+    "specifications": {
+      "screenSize": "24 inch",
+      "resolution": "1920×1080 (FHD)",
+      "refreshRate": "165Hz"
+    },
+    "tags": ["gaming", "monitor", "FHD", "165Hz", "FreeSync"],
+    "warranty": "36 tháng",
+    "images": "images/monitor090124.jpg"
+  },
+  {
+    "id": "headset100124",
+    "name": "Tai Nghe Gaming Không Dây ANC",
+    "price": 2250000,
+    "description": "Tai nghe gaming không dây, chống ồn chủ động ANC, độ trễ 2.4GHz cực thấp, pin 30h, micro pop-up.",
+    "stock": 0,
+    "specifications": {
+      "driver": "40mm",
+      "battery": "30h",
+      "connectivity": "2.4GHz Wireless + Bluetooth 5.2"
+    },
+    "tags": ["gaming", "headset", "wireless", "ANC", "low latency"],
+    "warranty": "12 tháng",
+    "images": "images/headset100124.jpg"
+  },
+  {
+    "id": "desk110124",
+    "name": "Bàn Gaming Nâng Hạ Điện Cơ",
+    "price": 6200000,
+    "description": "Bàn gaming nâng hạ điện, chiều cao 60–125cm, tải trọng 80kg, khung thép chắc chắn, preset nhớ 4 vị trí.",
+    "stock": 12,
+    "specifications": {
+      "heightRange": "60–125 cm",
+      "weightCapacity": "80 kg",
+      "material": "Khung thép + mặt MDF phủ PVC"
+    },
+    "tags": ["gaming", "standing desk", "ergonomic", "electric"],
+    "warranty": "24 tháng",
+    "images": "images/desk110124.jpg"
+  },
+  {
+    "id": "capture120124",
+    "name": "Capture Card 4K HDMI USB-C",
+    "price": 1980000,
+    "description": "Card capture 4K 30fps / 1080p 60fps qua USB-C, độ trễ cực thấp, tương thích OBS/XSplit/Streamlabs.",
+    "stock": 28,
+    "specifications": {
+      "inputResolution": "4K 30fps / 1080p 60fps",
+      "connectivity": "HDMI in + USB-C out",
+      "compatibility": "OBS / XSplit / Streamlabs"
+    },
+    "tags": ["streaming", "capture card", "4K", "content creator"],
+    "warranty": "12 tháng",
+    "images": "images/capture120124.jpg"
+  },
+  {
+    "id": "speaker130124",
+    "name": "Loa Gaming RGB 2.0 Stereo",
+    "price": 750000,
+    "description": "Loa desktop 2.0 stereo, công suất 2×15W, hiệu ứng RGB đồng bộ, kết nối 3.5mm + USB, điều chỉnh bass/treble.",
+    "stock": 65,
+    "specifications": {
+      "wattage": "2×15W",
+      "connectivity": "3.5mm + USB",
+      "backlight": "RGB sync"
+    },
+    "tags": ["gaming", "speaker", "RGB", "stereo", "desktop"],
+    "warranty": "12 tháng",
+    "images": "images/speaker130124.jpg"
+  },
+  {
+    "id": "keyboard140124",
+    "name": "Bàn Phím Cơ Gaming Full Size",
+    "price": 2650000,
+    "description": "Bàn phím cơ full-size 104 phím, switch blue clicky, RGB per-key, wrist rest từ tính kèm theo, USB passthrough.",
+    "stock": 35,
+    "specifications": {
+      "layout": "Full-size 104 phím",
+      "switch": "Blue clicky",
+      "backlight": "RGB per-key"
+    },
+    "tags": ["gaming", "mechanical keyboard", "RGB", "full-size", "blue switch"],
+    "warranty": "24 tháng",
+    "images": "images/keyboard140124.jpg"
+  },
+  {
+    "id": "mouse150124",
+    "name": "Chuột Gaming Có Dây Siêu Nhẹ",
+    "price": 780000,
+    "description": "Chuột gaming có dây honeycomb shell siêu nhẹ 58g, cảm biến 16K DPI, polling rate 1000Hz, cáp Paracord.",
+    "stock": 90,
+    "specifications": {
+      "dpi": "200–16000",
+      "connectivity": "USB-A Paracord",
+      "weight": "58g"
+    },
+    "tags": ["gaming", "mouse", "lightweight", "honeycomb", "wired"],
+    "warranty": "12 tháng",
+    "images": "images/mouse150124.jpg"
+  },
+  {
+    "id": "armrest160124",
+    "name": "Kê Tay Gaming Memory Foam",
+    "price": 195000,
+    "description": "Kê tay bàn phím memory foam, bề mặt vải thoáng khí, đế chống trượt, giảm mỏi cổ tay khi chơi game dài.",
+    "stock": 200,
+    "specifications": {
+      "dimensions": "43×8×2.5cm",
+      "material": "Memory foam + vải mesh",
+      "base": "Cao su chống trượt"
+    },
+    "tags": ["gaming", "wrist rest", "ergonomic", "memory foam"],
+    "warranty": null,
+    "images": "images/armrest160124.jpg"
+  },
+  {
+    "id": "hub170124",
+    "name": "USB Hub Gaming 7-in-1 USB-C",
+    "price": 520000,
+    "description": "Hub USB-C 7 cổng: 3× USB-A 3.0, HDMI 4K, SD/microSD, sạc pass-through 100W, vỏ nhôm tản nhiệt tốt.",
+    "stock": 75,
+    "specifications": {
+      "ports": "3× USB-A 3.0, HDMI, SD, microSD",
+      "powerDelivery": "100W pass-through",
+      "material": "Vỏ nhôm"
+    },
+    "tags": ["gaming", "USB hub", "USB-C", "multiport", "accessories"],
+    "warranty": "12 tháng",
+    "images": "images/hub170124.jpg"
+  },
+  {
+    "id": "chair180124",
+    "name": "Ghế Gaming Racing Compact",
+    "price": 2950000,
+    "description": "Ghế gaming racing style, tựa lưng ngả 135°, đệm cổ + lưng kèm theo, tay ghế 2D, phù hợp người dưới 80kg.",
+    "stock": 25,
+    "specifications": {
+      "weightCapacity": "80 kg",
+      "height": "Điều chỉnh được",
+      "material": "Da PU"
+    },
+    "tags": ["gaming", "chair", "racing", "compact"],
+    "warranty": "12 tháng",
+    "images": "images/chair180124.jpg"
+  },
+  {
+    "id": "mic190124",
+    "name": "Micro Streaming USB Cardioid",
+    "price": 1100000,
+    "description": "Micro USB cardioid cho streaming và podcast, pickup pattern siêu hướng, gain điều chỉnh được, nút mute cảm ứng, đế để bàn chắc.",
+    "stock": 50,
+    "specifications": {
+      "pattern": "Cardioid",
+      "connectivity": "USB-C",
+      "frequency": "50Hz–20kHz"
+    },
+    "tags": ["streaming", "microphone", "USB", "podcast", "content creator"],
+    "warranty": "12 tháng",
+    "images": "images/mic190124.jpg"
+  },
+  {
+    "id": "fan200124",
+    "name": "Quạt Case ARGB 120mm 3-pack",
+    "price": 480000,
+    "description": "Bộ 3 quạt case 120mm ARGB đồng bộ, vòng bi fluid bearing êm ái, tốc độ 500–1800 RPM, đầu nối 5V ARGB + PWM.",
+    "stock": 110,
+    "specifications": {
+      "size": "120mm",
+      "speedRange": "500–1800 RPM",
+      "connector": "5V ARGB + PWM"
+    },
+    "tags": ["PC", "case fan", "ARGB", "cooling", "RGB"],
+    "warranty": "24 tháng",
+    "images": "images/fan200124.jpg"
+  },
+  {
+    "id": "pad210124",
+    "name": "Mousepad Gaming LED RGB XL",
+    "price": 420000,
+    "description": "Mousepad gaming XL có viền LED RGB 14 chế độ, sạc USB-C, bề mặt vải kiểm soát tốt, kích thước 900×400mm.",
+    "stock": 80,
+    "specifications": {
+      "dimensions": "900×400×4mm",
+      "lighting": "RGB 14 chế độ",
+      "base": "Cao su chống trượt"
+    },
+    "tags": ["gaming", "mousepad", "RGB", "XL", "LED"],
+    "warranty": "6 tháng",
+    "images": "images/pad210124.jpg"
+  },
+  {
+    "id": "monitor220124",
+    "name": "Màn Hình Gaming 32\" 4K 144Hz",
+    "price": 14500000,
+    "description": "Màn hình IPS 32 inch 4K UHD, 144Hz, 1ms, HDMI 2.1, DisplayPort 1.4, HDR600, lý tưởng cho game AAA và đồ họa.",
+    "stock": 8,
+    "specifications": {
+      "screenSize": "32 inch",
+      "resolution": "3840×2160 (4K)",
+      "refreshRate": "144Hz"
+    },
+    "tags": ["gaming", "monitor", "4K", "144Hz", "HDR", "IPS"],
+    "warranty": "36 tháng",
+    "images": "images/monitor220124.jpg"
+  },
+  {
+    "id": "earbuds230124",
+    "name": "Gaming Earbuds TWS Low Latency",
+    "price": 650000,
+    "description": "Tai nghe TWS gaming mode độ trễ 40ms, driver 10mm, mic ENC khử tiếng ồn, pin 6h + hộp sạc 24h.",
+    "stock": 120,
+    "specifications": {
+      "latency": "40ms gaming mode",
+      "battery": "6h + 24h case",
+      "driver": "10mm"
+    },
+    "tags": ["gaming", "earbuds", "TWS", "low latency", "wireless"],
+    "warranty": "12 tháng",
+    "images": "images/earbuds230124.jpg"
+  },
+  {
+    "id": "stand240124",
+    "name": "Giá Đỡ Headset Gaming Nhôm",
+    "price": 275000,
+    "description": "Giá treo tai nghe gaming bằng nhôm nguyên khối, tích hợp 2 cổng USB-A, chống rối dây sạc, ổn định chắc chắn.",
+    "stock": 95,
+    "specifications": {
+      "material": "Nhôm nguyên khối",
+      "usbPorts": "2× USB-A",
+      "dimensions": "10×10×20cm"
+    },
+    "tags": ["gaming", "headset stand", "desk organizer", "aluminum"],
+    "warranty": "6 tháng",
+    "images": "images/stand240124.jpg"
+  }
+]
